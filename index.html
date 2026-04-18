@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Puneet Gaur | Salesforce System & Application Architect</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #eef2f9 0%, #e0e8f0 100%);
+      font-family: 'Inter', sans-serif;
+      color: #0a1c2f;
+      line-height: 1.5;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 2rem;
+      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25);
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+
+    /* header hero section */
+    .hero {
+      background: linear-gradient(135deg, #0b2b3f 0%, #03212f 100%);
+      padding: 2.8rem 3rem;
+      color: white;
+      position: relative;
+      border-bottom: 5px solid #00a1e0;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(120deg, #ffffff, #b3e4ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-tagline {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #bfd9ff;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 0.8rem;
+    }
+
+    .hero-tagline span i {
+      margin-right: 8px;
+      color: #2bc5ff;
+    }
+
+    .badge-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin: 1.2rem 0 0.5rem 0;
+    }
+
+    .badge {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(4px);
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+
+    /* grid layout */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 2.1fr;
+      gap: 0;
+    }
+
+    /* left sidebar */
+    .sidebar {
+      background: #f8fafd;
+      border-right: 1px solid #e2edf7;
+      padding: 2rem 1.8rem;
+    }
+
+    .main-content {
+      padding: 2rem 2.2rem;
+      background: white;
+    }
+
+    /* sections styling */
+    .section {
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #0077b6;
+      margin-bottom: 1rem;
+      border-left: 4px solid #00a1e0;
+      padding-left: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-title i {
+      font-size: 1rem;
+      color: #2c7da0;
+    }
+
+    /* contact & certs */
+    .contact-info p {
+      margin-bottom: 0.6rem;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: #1e405e;
+    }
+
+    .skill-tag {
+      display: inline-block;
+      background: white;
+      border-radius: 30px;
+      padding: 0.2rem 0.9rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      margin: 0.25rem 0.3rem;
+      border: 1px solid #cfdfed;
+      color: #0f3b5c;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    }
+
+    .cert-list {
+      list-style: none;
+    }
+    .cert-list li {
+      font-size: 0.78rem;
+      margin-bottom: 0.65rem;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .cert-list li i {
+      color: #00a1e0;
+      font-size: 0.7rem;
+      width: 18px;
+      margin-top: 0.2rem;
+    }
+
+    /* work experience cards */
+    .exp-card {
+      margin-bottom: 1.9rem;
+      border-bottom: 1px solid #ecf3f9;
+      padding-bottom: 1.5rem;
+    }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+    .exp-role {
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: #0a2540;
+    }
+    .exp-company {
+      font-weight: 600;
+      color: #2c7da0;
+    }
+    .exp-date {
+      font-size: 0.75rem;
+      color: #6c86a3;
+      font-weight: 500;
+    }
+    .tech-jargon {
+      font-size: 0.8rem;
+      color: #2c3e66;
+      margin: 0.5rem 0 0.5rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .tech-jargon span {
+      background: #eef3fc;
+      padding: 0.2rem 0.7rem;
+      border-radius: 16px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      font-family: monospace;
+    }
+    .exp-desc {
+      font-size: 0.85rem;
+      color: #1f3b4c;
+      margin-top: 0.6rem;
+      line-height: 1.45;
+    }
+    .exp-desc ul {
+      padding-left: 1.2rem;
+      margin-top: 0.4rem;
+    }
+    .exp-desc li {
+      margin-bottom: 0.35rem;
+    }
+
+    /* metrics / highlight */
+    .metric-badge {
+      background: #eef2fa;
+      border-radius: 20px;
+      padding: 0.2rem 0.7rem;
+      font-weight: 600;
+      font-size: 0.7rem;
+      display: inline-block;
+      margin-right: 0.5rem;
+      color: #006d9e;
+    }
+
+    hr {
+      margin: 0.8rem 0;
+      border: none;
+      height: 1px;
+      background: linear-gradient(to right, #cbdde9, transparent);
+    }
+
+    /* responsive */
+    @media (max-width: 900px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .sidebar {
+        border-right: none;
+        border-bottom: 1px solid #e2edf7;
+      }
+    }
+    .icon-text {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .git-stat {
+      font-family: monospace;
+      font-weight: 600;
+    }
+    footer {
+      background: #f1f6fc;
+      text-align: center;
+      padding: 1.2rem;
+      font-size: 0.75rem;
+      color: #577190;
+      border-top: 1px solid #e2edf7;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- Hero section -->
+  <div class="hero">
+    <h1>Puneet Gaur</h1>
+    <div class="hero-tagline">
+      <span><i class="fas fa-cloud-upload-alt"></i> Salesforce/AWS Certified System & Application Architect</span>
+      <span><i class="fas fa-microchip"></i> 17+ YOE · Multi-cloud Strategist</span>
+      <span><i class="fas fa-chalkboard-user"></i> Technical Thought Leader</span>
+    </div>
+    <div class="badge-strip">
+      <span class="badge"><i class="fas fa-code-branch"></i> DevOps · Copado · SFDX</span>
+      <span class="badge"><i class="fas fa-database"></i> Data Cloud · CRMA · Big Objects</span>
+      <span class="badge"><i class="fas fa-bolt"></i> Event-Driven Arch · Kafka · CDC</span>
+      <span class="badge"><i class="fas fa-lock"></i> Shield Encryption · SSO · MFA</span>
+      <span class="badge"><i class="fas fa-chart-line"></i> Heroku Connect · MuleSoft · AWS</span>
+    </div>
+  </div>
+
+  <div class="content-grid">
+    <!-- LEFT SIDEBAR: Contact, Core Skills, Certifications, DevOps Stack -->
+    <div class="sidebar">
+      <div class="section">
+        <div class="section-title"><i class="fas fa-user-astronaut"></i> CONTACT & EDGE</div>
+        <div class="contact-info">
+          <p><i class="fas fa-map-marker-alt"></i> Gilbert, AZ · USA / Gurgaon, India</p>
+          <p><i class="fab fa-linkedin"></i> linkedin.com/in/puneet-gaur-sf-architect</p>
+          <p><i class="fas fa-envelope"></i> puneet.gaur@sf-architect.io</p>
+          <p><i class="fas fa-globe"></i> portfolio: scalable-solutions.arch</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title"><i class="fas fa-cogs"></i> CORE ARCHITECTURE DNA</div>
+        <div>
+          <span class="skill-tag">Multi-Cloud Strategy</span>
+          <span class="skill-tag">Sales Cloud</span>
+          <span class="skill-tag">Service Cloud</span>
+          <span class="skill-tag">Experience Cloud</span>
+          <span class="skill-tag">Field Service Lightning</span>
+          <span class="skill-tag">Marketing Cloud</span>
+          <span class="skill-tag">Data Cloud (CDP)</span>
+          <span class="skill-tag">Heroku Enterprise</span>
+          <span class="skill-tag">MuleSoft Composer</span>
+          <span class="skill-tag">REST/SOAP API Mgmt</span>
+          <span class="skill-tag">Change Data Capture</span>
+          <span class="skill-tag">Platform Events</span>
+          <span class="skill-tag">Kafka/Confluent</span>
+          <span class="skill-tag">AWS Lambda/SQS/EventBridge</span>
+          <span class="skill-tag">Lightning Web Components</span>
+          <span class="skill-tag">Apex Enterprise Patterns</span>
+          <span class="skill-tag">Async Processing (Queueable/Batch)</span>
+          <span class="skill-tag">Large Data Volume Arch</span>
+          <span class="skill-tag">Big Objects / Archiving</span>
+          <span class="skill-tag">Shield & Platform Encryption</span>
+          <span class="skill-tag">Copado / GearSet / GitHub Actions</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title"><i class="fas fa-certificate"></i> CERTIFICATION ARMORY</div>
+        <ul class="cert-list">
+          <li><i class="fas fa-check-circle"></i> Salesforce Certified System Architect</li>
+          <li><i class="fas fa-check-circle"></i> Salesforce Certified Application Architect</li>
+          <li><i class="fas fa-check-circle"></i> Salesforce Data Cloud Consultant</li>
+          <li><i class="fas fa-check-circle"></i> Salesforce AI Specialist & AI Associate</li>
+          <li><i class="fas fa-check-circle"></i> Integration Architect / Sharing & Visibility / Data Architect / Identity & Access Mgmt</li>
+          <li><i class="fas fa-check-circle"></i> CPQ Specialist · Service Cloud Consultant</li>
+          <li><i class="fas fa-check-circle"></i> Marketing Cloud Admin + Developer · MuleSoft Associate</li>
+          <li><i class="fas fa-check-circle"></i> Platform Developer II · JavaScript Dev I · App Builder</li>
+          <li><i class="fas fa-check-circle"></i> TOGAF® (Enterprise Arch) Foundation · COPADO</li>
+          <li><i class="fas fa-check-circle"></i> Ruby On Rails · MCPD (EA)</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title"><i class="fas fa-chart-simple"></i> DEVOPS & TOOLCHAIN</div>
+        <div>
+          <span class="skill-tag">CI/CD Pipelines</span>
+          <span class="skill-tag">SFDX · Git workflows</span>
+          <span class="skill-tag">Copado · GearSet</span>
+          <span class="skill-tag">GitHub Actions</span>
+          <span class="skill-tag">Jira · Agile at Scale</span>
+          <span class="skill-tag">New Relic · Datadog</span>
+          <span class="skill-tag">Docker · Heroku Pipelines</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT: professional summary + work history with IT jargon boost -->
+    <div class="main-content">
+      <div class="section">
+        <div class="section-title"><i class="fas fa-bullhorn"></i> PROFESSIONAL SYNOPSIS</div>
+        <p style="font-size:0.9rem; margin-bottom:0.75rem;"><strong>Salesforce Certified System & Application Architect</strong> with 17+ years of hyperdrive experience across SaaS, client-server, and event-driven ecosystems. Orchestrate <strong>scalable, high-velocity architectures</strong> bridging Sales, Service, Marketing, Experience Clouds, and hyperscalers (AWS, Heroku). Proven track record driving <strong>digital transformation</strong> via LWC, Apex, Flow orchestration, and Kafka/CDC real-time pipelines. Reduce technical debt, optimize SOQL/LDV patterns, enforce zero-trust security models (Shield, MFA, Platform Encryption), and mentor elite agile squads. Passionate about <strong>decoupled systems, API-first integration, and TMT domain excellence.</strong></p>
+        <div class="tech-jargon">
+          <span>⚡ 40%+ process automation via Flow + Apex</span>
+          <span>📈 60% reduction in CPU timeouts</span>
+          <span>☁️ Multi-org · MuleSoft unification</span>
+          <span>🔐 GDPR/HIPAA compliant architectures</span>
+        </div>
+      </div>
+
+      <!-- WORK HISTORY -->
+      <div class="section">
+        <div class="section-title"><i class="fas fa-briefcase"></i> RELEVANT EXPERIENCE · ENTERPRISE ARCHITECTURE</div>
+
+        <!-- Deloitte Solution Architect (current) -->
+        <div class="exp-card">
+          <div class="exp-header">
+            <div><span class="exp-role">Solution Architect</span> <span class="exp-company">@ Deloitte Digital</span></div>
+            <div class="exp-date"><i class="far fa-calendar-alt"></i> 07/2023 – Present · Gilbert, AZ</div>
+          </div>
+          <div class="tech-jargon">
+            <span>LWC/Apex</span><span>Flow Orchestrator</span><span>Heroku Connect</span><span>AWS EventBridge</span><span>Copado CI/CD</span><span>MuleSoft</span><span>CPQ</span><span>Shield Enc.</span>
+          </div>
+          <div class="exp-desc">
+            <ul>
+              <li>Designed <strong>event-driven, decoupled systems</strong> (AWS Lambda, SQS, EventBridge) processing high-volume IoT telemetry for telecom clients → <span class="metric-badge">99.9% data reliability</span></li>
+              <li>Architected <strong>multi-cloud, multi-org strategy</strong> unifying Sales, Service, Experience Cloud across 5 business units using MuleSoft + custom middleware, enabling global deployment.</li>
+              <li>Developed <strong>complex Flows (record-triggered, screen, auto-launched)</strong> replacing legacy Process Builder & workflows, reducing manual effort by <strong>40%+</strong> and improving process accuracy.</li>
+              <li>Built custom LWC + Apex controllers integrated with external ERP (SAP/Oracle) and Marketing Cloud via REST/SOAP, real-time sync improved adoption by <strong>35%</strong>.</li>
+              <li>Leveraged <strong>Heroku Connect + Postgres</strong> to enable bi-directional sync & scalable analytics, cutting reporting latency from hours to near real-time.</li>
+              <li>Defined 3-5 year Salesforce roadmap: SSO + Shield encryption, CDC/Platform Events, DevOps pipeline standardization using Copado/SFDX.</li>
+              <li>Optimized <strong>SOQL & trigger frameworks</strong> with asynchronous batch/queueable, reducing CPU timeouts by <strong>60%</strong> and improving page load speeds.</li>
+              <li>Mentored 20+ developers on Lightning adoption, Flow automation & integration patterns, scaling team velocity.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Solution Manager @ Deloitte India -->
+        <div class="exp-card">
+          <div class="exp-header">
+            <div><span class="exp-role">Solution Manager</span> <span class="exp-company">@ Deloitte India</span></div>
+            <div class="exp-date"><i class="far fa-calendar-alt"></i> 06/2022 – 07/2023 · Gurgaon, HR</div>
+          </div>
+          <div class="tech-jargon"><span>LWC/Flows</span><span>Apex Enterprise</span><span>Event-driven</span><span>Data Cloud</span><span>GitHub Actions</span></div>
+          <div class="exp-desc">
+            <ul>
+              <li>Led full-cycle Salesforce implementations (requirements → deployment) with focus on <strong>scalability, security & governor limits</strong> for financial services clients.</li>
+              <li>Orchestrated real-time integrations with <strong>AWS S3, external middleware</strong> using REST/SOAP & Change Data Capture for low-latency data mesh.</li>
+              <li>Engineered screen flows & auto-launched flows to streamline approvals, cutting processing time by <strong>50%</strong> for enterprise clients.</li>
+              <li>Defined sharing & security architecture (role hierarchy, permission sets, MFA, platform encryption) ensuring compliance.</li>
+              <li>Optimized large data volumes (Big Objects + archiving strategies) and tuned asynchronous apex, batch jobs.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Senior Solution Specialist (Marketing Cloud + Heroku) -->
+        <div class="exp-card">
+          <div class="exp-header">
+            <div><span class="exp-role">Senior Solution Specialist</span> <span class="exp-company">@ Deloitte US</span></div>
+            <div class="exp-date"><i class="far fa-calendar-alt"></i> 10/2018 – 06/2022 · Gilbert, AZ</div>
+          </div>
+          <div class="tech-jargon"><span>Marketing Cloud</span><span>Journey Builder</span><span>Heroku Microservices</span><span>CRMA</span><span>SSJS</span></div>
+          <div class="exp-desc">
+            <ul>
+              <li>Integrated <strong>Salesforce Marketing Cloud with CRM core</strong> to automate omni-channel campaigns, customer journeys & real-time personalization → <strong>25% uplift in engagement</strong>.</li>
+              <li>Architected <strong>Heroku-powered microservices</strong> for high-volume data processing (Node.js + Postgres), extending Salesforce limits and handling 5M+ daily API calls.</li>
+              <li>Built custom Lightning Web Components (LWC) to embed marketing insights directly into Sales Console, improving user productivity.</li>
+              <li>Optimized SQL queries & data extracts for Marketing Cloud, reducing sync latency and enabling near-real-time analytics.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Technical Project Manager + Accenture roles (compact but jargon rich) -->
+        <div class="exp-card">
+          <div class="exp-header">
+            <div><span class="exp-role">Technical Project Manager</span> <span class="exp-company">@ Accenture</span></div>
+            <div class="exp-date"><i class="far fa-calendar-alt"></i> 06/2018 – 09/2018 · Berwyn, PA</div>
+          </div>
+          <div class="tech-jargon"><span>Ruby on Rails</span><span>Heroku Dynos</span><span>PostgreSQL tuning</span><span>Redis/Sidekiq</span><span>CI/CD Pipelines</span></div>
+          <div class="exp-desc">
+            <ul>
+              <li>Led full-stack development on <strong>Ruby on Rails + PostgreSQL + Heroku</strong>, optimizing CI/CD pipelines, auto-scaling and achieving <strong>99.95% uptime</strong>.</li>
+              <li>Managed DevOps & cloud infra (review apps, pipeline automation) using New Relic & Datadog for observability.</li>
+              <li>Enforced OWASP standards, SSL termination, and database replication strategies for failover resilience.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Associate Manager & Technical Lead Legacy -->
+        <div class="exp-card">
+          <div class="exp-header">
+            <div><span class="exp-role">Associate Manager / Tech Lead</span> <span class="exp-company">@ Accenture (Microsoft & SnapLogic/ETL)</span></div>
+            <div class="exp-date"><i class="far fa-calendar-alt"></i> 2010 – 2014 · USA/India</div>
+          </div>
+          <div class="tech-jargon"><span>ASP.NET MVC</span><span>SQL Server/Oracle</span><span>SnapLogic</span><span>Informatica PowerCenter</span><span>Entity Framework</span></div>
+          <div class="exp-desc">
+            <ul>
+              <li>Spearheaded migration of legacy client-server systems to cloud-native (Azure) boosting scalability by <strong>X%</strong> and reducing operational costs.</li>
+              <li>Engineered ETL workflows (Informatica) to streamline data pipelines across heterogeneous sources; mentored 12+ developers on .NET best practices & data architecture.</li>
+              <li>Designed high-performance data models & T-SQL stored procedures, achieving <strong>40% query performance gain</strong> for reporting dashboards.</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Early career summary with modernization impact -->
+        <div class="exp-card">
+          <div class="exp-header">
+            <div><span class="exp-role">Software Engineer / Module Lead</span> <span class="exp-company">@ Techprocess & Edex</span></div>
+            <div class="exp-date"><i class="far fa-calendar-alt"></i> 2005 – 2010 · Mumbai/India</div>
+          </div>
+          <div class="tech-jargon"><span>ASP.NET Web Forms</span><span>C#</span><span>SQL Server Optimization</span><span>jQuery</span><span>N-Tier Arch</span></div>
+          <div class="exp-desc">
+            <ul>
+              <li>Built full-stack portals with ASP.NET/C#, SQL Server, JavaScript delivering high-availability e-commerce solutions → improved response time by 40% via refactoring.</li>
+              <li>Developed SQL Server scanning components & automated data workflows; maintained <strong>99.9% uptime</strong> for mission-critical systems.</li>
+              <li>Prototyped modernized features using ASP.NET Core for legacy modernization roadmaps.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADDITIONAL: architectural governance & leadership -->
+      <div class="section">
+        <div class="section-title"><i class="fas fa-rocket"></i> STRATEGIC GOVERNANCE & INNOVATION</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 0.5rem;">
+          <span class="skill-tag"><i class="fas-regular fa-chart-network"></i> Event-driven Maturity Models</span>
+          <span class="skill-tag"><i class="fas fa-shield-alt"></i> Zero Trust Security · MFA · IP restrictions</span>
+          <span class="skill-tag"><i class="fas fa-database"></i> LDV Patterns · Big Objects Archiving</span>
+          <span class="skill-tag"><i class="fas fa-code-branch"></i> Declarative vs Custom – balanced TCO</span>
+          <span class="skill-tag"><i class="fas fa-chalkboard"></i> Agile Transformation (SAFe) · Onshore/Offshore</span>
+          <span class="skill-tag"><i class="fas fa-brain"></i> AI Specialist: Einstein GPT & Prompt Builder</span>
+        </div>
+        <p style="font-size:0.8rem; margin-top: 0.9rem;"><i class="fas fa-quote-left"></i>  “Architecting future-proof ecosystems with fusion of low-code agility (Flow) and pro-code extensibility (LWC/Apex), while ensuring observability, resilience & compliance.”</p>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <i class="fas fa-sync-alt"></i> Available for Principal Architect / Salesforce CTA-track roles · Global deployment ready · Let’s architect the intelligent enterprise.
+  </footer>
+</div>
+</body>
+</html>
